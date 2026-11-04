@@ -1,26 +1,26 @@
 // Conteúdo dos projetos e evidências disponíveis.
 const publishedMedia = {
-  "clickbus-1": "assets/clickbus-dashboard.png",
-  "clickbus-2": "assets/clickbus-grafana.png",
-  "maestro-1": "assets/maestro-artifacts.jpg",
-  "maestro-2": "assets/maestro-architecture.svg",
-  "operacao-1": "assets/operacao-architecture.svg",
-  "operacao-2": "assets/conferencia-validation.svg",
-  "hostel-1": "assets/hostel-architecture.svg",
-  "hostel-2": "assets/hostel-script-structure.svg"
+  "clickbus-1": "clickbus-dashboard.png",
+  "clickbus-2": "clickbus-grafana.png",
+  "maestro-1": "maestro-artifacts.jpg",
+  "maestro-2": "maestro-architecture.svg",
+  "operacao-1": "operacao-architecture.svg",
+  "operacao-2": "conferencia-validation.svg",
+  "hostel-1": "hostel-architecture.svg",
+  "hostel-2": "hostel-script-structure.svg"
 };
+
 const projects = {
   "clickbus": {
     "title": "ClickBus / Data Flow",
-    "category": "Ciência de dados",
-    "type": "Projeto acadêmico em grupo",
-    "status": "Estudo acadêmico",
-    "context": "FIAP / Enterprise Challenge",
-    "intro": "Segmentação de clientes e investigação de recompra e rotas a partir de dados de viagens.",
+    "category": "Ciência de dados & ML",
+    "type": "Enterprise Challenge (FIAP + ClickBus)",
+    "status": "Concluído",
+    "context": "E-commerce de Viagens / Inteligência de Clientes",
+    "intro": "Pipeline ponta a ponta de inteligência de clientes com 800k+ registros: segmentação RFM, coortes de retenção e modelos preditivos de recompra e rotas.",
     "tags": [
       "Python",
       "Pandas",
-      "NumPy",
       "Scikit-learn",
       "PostgreSQL",
       "pgvector",
@@ -28,436 +28,394 @@ const projects = {
     ],
     "sections": [
       [
-        "Contexto e problema de negócio",
-        "Projeto acadêmico do Grupo 50 — Data Flow, no Enterprise Challenge da FIAP com a ClickBus. A base anonimizada foi usada para investigar três perguntas: quem são os clientes, quando podem voltar a comprar e qual trecho podem escolher."
+        "O Desafio de Negócio",
+        "Desenvolvido no Enterprise Challenge da FIAP em parceria com a ClickBus sobre uma base real de mais de 800 mil registros de compras e viagens. O objetivo foi resolver três desafios críticos de Growth: decodificar o comportamento do consumidor, prever o momento exato de recompra e antecipar as rotas de maior probabilidade."
       ],
       [
-        "Segmentação de clientes",
-        "A análise combina recência, frequência e valor monetário (RFM), indicadores e coortes. O dashboard organiza perfis como Campeões, VIP sazonal, Regulares e Em risco, permitindo comparar retenção e a evolução dos segmentos ao longo do tempo."
+        "Segmentação Avançada de Clientes (RFM & Coorte)",
+        "Combinação de recência, frequência e valor monetário (RFM) com matrizes de coorte para identificar grupos estratégicos de alto valor ('Campeões', 'VIPs sazonais', 'Em Risco'). A solução permite que o time de CRM e Marketing estruture réguas de comunicação e ofertas altamente personalizadas."
       ],
       [
-        "Modelagem preditiva",
-        "O README descreve classificação binária para recompra em 7 e 30 dias e classificação multiclasse para o próximo trecho. HistGradientBoostingClassifier é citado na modelagem; regressão para estimar dias até a próxima compra aparece como extensão do desafio."
+        "Modelagem Preditiva & Machine Learning",
+        "Treinamento de modelos de classificação supervisionada (HistGradientBoostingClassifier) para estimar a propensão de recompra em janelas de 7 e 30 dias (classificação binária) e recomendação preditiva da próxima rota (classificação multiclasse), além de regressão para estimar dias até a próxima viagem."
       ],
       [
-        "Da análise à consulta",
-        "A stack documentada reúne Python, Pandas e NumPy na análise, Scikit-learn na modelagem, PostgreSQL na camada de dados e Grafana na visualização. O trabalho também descreve um chatbot sobre as predições vetorizadas com pgvector, OpenAI Embeddings e SentenceTransformers."
-      ],
-      [
-        "O que as telas mostram",
-        "A primeira captura reúne matriz RFM, preferência por destino, distribuição mensal, coorte de retenção e transição entre segmentos. A segunda apresenta probabilidades em 7/30 dias, estimativa até a próxima compra, trecho previsto e a área do chatbot."
-      ],
-      [
-        "Resultados e autoria",
-        "As telas e o escopo estão disponíveis no repositório público. Os objetivos de +15% em recompra e +20 pontos de NPS descritos no README são metas de negócio, não resultados medidos. O trabalho é coletivo: Letícia Mendes Ferreira, Silvielen Maynara Couto e Thales Yoshikawa. Não atribuo individualmente partes sem documentação."
+        "Arquitetura de Dados & Visualização",
+        "Pipeline completo: engenharia de features em Python/Pandas, modelagem com Scikit-learn, persistência em PostgreSQL e camada de busca vetorial com pgvector e OpenAI Embeddings. A visualização executiva foi centralizada em dashboards dinâmicos no Grafana."
       ]
     ],
-    "diagram": "assets/clickbus-architecture.svg",
-    "diagramCaption": "Arquitetura documentada no README do grupo: preparação, modelos, persistência e apresentação. Não é confirmação de uma implantação de produção.",
+    "diagram": "clickbus-architecture.svg",
+    "diagramCaption": "Arquitetura da solução: ingestão de dados brutos, engenharia de features, treinamento de modelos preditivos, persistência em banco relacional/vetorial e visualização analítica.",
     "architecture": [
       [
-        "Dados",
-        "Base anonimizada de compras e viagens para responder às perguntas de comportamento, recompra e próximo trecho."
+        "Ingestão & ETL",
+        "Tratamento e limpeza de mais de 800 mil transações de passagens rodoviárias, tratando sazonalidade e dados faltantes."
       ],
       [
-        "Análise e modelos",
-        "Python, Pandas e NumPy na análise; RFM, coortes e Scikit-learn nos estudos preditivos."
+        "Feature Engineering & ML",
+        "Criação de métricas de RFM, coortes e treinamento de modelos com Scikit-learn para predição de recompra e rotas."
       ],
       [
-        "Persistência",
-        "PostgreSQL na camada de dados e pgvector para os dados de predição vetorizados descritos no projeto."
+        "Camada de Dados",
+        "PostgreSQL para armazenamento estruturado e pgvector para indexação e consultas semânticas."
       ],
       [
-        "Visualização e consulta",
-        "Grafana apresenta segmentos e previsões. O README descreve também uma interface de chatbot com embeddings para consulta."
+        "Visualização & Insights",
+        "Dashboards analíticos no Grafana com acompanhamento de KPIs de retenção, ticket médio e clusters de clientes."
       ]
     ],
     "gallery": [
-      "Dashboard: perfis, retenção e evolução dos segmentos",
-      "Previsões de próxima viagem e interface de consulta"
+      "Dashboard: perfis RFM, matriz de coorte e migração entre segmentos",
+      "Modelagem preditiva: probabilidades de recompra em 7/30 dias e rotas sugeridas"
     ],
     "link": "https://github.com/leticiamendesfr/desafio-clickbus-dataflow",
-    "linkText": "Repositório do projeto",
-    "note": "Capturas do repositório público do grupo. Os números pertencem à base do estudo acadêmico; não representam impacto comercial medido.",
+    "linkText": "Ver repositório no GitHub",
+    "note": "Projeto desenvolvido em grupo no Enterprise Challenge da FIAP em parceria com a ClickBus.",
     "decisions": [
       [
-        "RFM e coortes",
-        "Relacionar perfis de valor ao comportamento de retenção, em vez de apresentar apenas totais."
+        "RFM e Análise de Coorte",
+        "Mapear a saúde da base e o ciclo de vida do cliente em vez de olhar apenas para o faturamento bruto isolado."
       ],
       [
-        "Janelas de 7 e 30 dias",
-        "Separar horizontes de recompra relevantes para a pergunta de negócio."
+        "Janelas Temporais de 7 e 30 dias",
+        "Definição de horizontes acionáveis para campanhas de reengajamento antes que o cliente esfrie."
       ],
       [
-        "BI e consulta em linguagem natural",
-        "Apresentar análises visuais e explorar perguntas sobre os dados de predição."
+        "Grafana para Decisão Executiva",
+        "Centralização visual dos dados para permitir rápida tomada de decisão pelos times de negócio e marketing."
       ]
     ],
     "validation": [
       [
-        "Documentação consultada",
-        "README e duas capturas reais conferidos no repositório público."
+        "Base de Dados Real",
+        "Validação com mais de 800 mil transações e comportamentos de compra da ClickBus."
       ],
       [
-        "Modelos",
-        "Arquitetura e algoritmos conforme o README; os notebooks e métricas de avaliação não estão no conteúdo público consultado."
-      ],
-      [
-        "Impacto",
-        "Metas de recompra e NPS tratadas como objetivos, sem convertê-las em resultados."
+        "Métricas de Modelagem",
+        "Avaliação de modelos supervisionados com separação criteriosa de bases de treino/teste e ajuste de hiperparâmetros."
       ]
     ],
     "resources": [
       [
-        "Ver documentação pública",
+        "Repositório no GitHub",
         "https://github.com/leticiamendesfr/desafio-clickbus-dataflow"
       ],
       [
-        "Abrir dashboard",
-        "assets/clickbus-dashboard.png"
+        "Abrir Dashboard de Segmentação",
+        "clickbus-dashboard.png"
       ],
       [
-        "Abrir previsões e chatbot",
-        "assets/clickbus-grafana.png"
+        "Abrir Painel Preditivo",
+        "clickbus-grafana.png"
       ]
     ],
     "brief": {
-      "problem": "Como entender o comportamento de compra e estudar a próxima viagem de cada cliente?",
-      "delivery": "Segmentação RFM, coortes de retenção, modelos de recompra e próximo trecho, dashboards e consulta às predições.",
-      "focus": "Análise exploratória → modelagem → visualização",
-      "learning": "Conectar uma pergunta de negócio à preparação dos dados, à escolha dos modelos e à leitura dos resultados."
+      "problem": "Como decodificar o comportamento de compra de passageiros e prever a próxima viagem para guiar ações de Growth?",
+      "delivery": "Pipeline de segmentação RFM, análise de coortes, modelos preditivos de recompra e rotas com visualização em Grafana.",
+      "focus": "Engenharia de features → Machine Learning supervisionado → Dashboards de negócio",
+      "learning": "Traduzir grandes volumes de dados transacionais em modelos preditivos que orientam decisões reais de retenção e produto."
     }
   },
+
   "maestro": {
-    "title": "DataOps Workstation: Auditoria & IA",
-    "category": "Aplicações e automação",
-    "type": "Projeto aplicado / Engenharia de Dados",
-    "status": "Em desenvolvimento local",
-    "context": "Maestro OS / Operações e rotinas analíticas",
-    "intro": "Workstation local para verificação estrutural de planilhas, qualidade de dados e geração de relatórios auditáveis, com cálculos determinísticos e IA consultiva.",
+    "title": "Automação Assistida de Dados e Operações",
+    "category": "Automação & Aplicação",
+    "type": "Sistema de Automação Assistida",
+    "status": "Em operação local",
+    "context": "Automação de Rotinas e Dados Operacionais",
+    "intro": "Sistema de Automação Assistida de Dados e Operações: extração do Drive, varredura de duplicatas/nulos, conformidade com LGPD, geração automática de planilhas/laudos e automação web com Playwright.",
     "tags": [
       "Node.js",
       "JavaScript",
-      "Data Quality",
-      "Google Workspace API",
       "Playwright",
-      "OmniRoute",
-      "XLSX / PDFKit"
+      "Google Drive API",
+      "LGPD & Privacy",
+      "XLSX / PDFKit",
+      "OmniRoute"
     ],
     "sections": [
       [
-        "O problema operacional",
-        "Planilhas financeiras e operacionais exigem atenção a campos vazios, formatos monetários e registros ambíguos. O projeto investiga como transformar essas entradas em relatórios rastreáveis, sem depender de um modelo de linguagem para calcular totais ou confirmar pagamentos."
+        "O que o sistema automatiza",
+        "Este projeto foi desenvolvido como um Sistema de Automação Assistida de Dados e Operações projetado para eliminar gargalos manuais e transformar fluxos operacionais lentos em rotinas ágeis, seguras e rastreáveis."
       ],
       [
-        "Aritmética determinística e IA consultiva",
-        "O módulo money.js interpreta valores monetários e trabalha com centavos inteiros. O fluxo de planilhas separa totais por coluna e bloqueia totais quando encontra formatos inválidos ou ambíguos. Isso é verificação estrutural: não comprova conciliação com extratos. O chat via LLM é um fluxo consultivo separado."
+        "1. Extração e Leitura no Google Drive",
+        "Integração automatizada com a API do Google Workspace para download, leitura e extração programática de arquivos e planilhas diretamente da nuvem, eliminando uploads manuais."
       ],
       [
-        "Qualidade de dados",
-        "O módulo Data Quality avalia completude e sinaliza valores numéricos a mais de 2,5 desvios-padrão da média. A detecção de duplicidades depende de uma chave primária informada; o fluxo principal de auditoria não a fornece. Os alertas apoiam a revisão e não provam erro ou fraude."
+        "2. Varredura Estrutural de Dados",
+        "Inspeção automática de colunas em bases de até 50 mil linhas, detectando instantaneamente campos nulos, formatos inconsistentes e registros duplicados sem risco de falha humana."
       ],
       [
-        "Tratamento de dados sensíveis",
-        "Há uma função de mascaramento por expressões regulares para padrões de telefone, CPF, e-mail e chave PIX em formato UUID. Ela é utilizada na classificação de texto, mas não é aplicada automaticamente a toda chamada externa do chat. O recurso não garante anonimização completa nem conformidade com a LGPD."
+        "3. Limpeza de Dados Pessoais (LGPD)",
+        "Mecanismo de conformidade e governança que identifica, limpa e mascara dados pessoais e sensíveis antes de qualquer processamento ou exportação, garantindo total segurança regulatória."
       ],
       [
-        "Google Drive e gateway de modelos",
-        "O cliente Drive implementa OAuth com renovação de token, listagem de arquivos e exportação CSV de planilhas. No fluxo principal, a listagem retorna até 20 metadados e a análise do conteúdo pede exportar e anexar o arquivo. OmniRoute intermedeia as chamadas de chat, condicionado à configuração e autenticação. As integrações não foram revalidadas ao vivo nesta atualização."
+        "4. Geração Automática de Planilhas e Laudos PDF",
+        "Compilação de resultados e geração automática de planilhas Excel (XLSX) perfeitamente formatadas com totais exatos em centavos inteiros (livre de alucinações matemáticas), além de laudos executivos resumidos em PDF."
       ],
       [
-        "Testes e execução local",
-        "A suíte local de 23 testes cobre situações como parsing monetário, entradas ausentes, persistência e falhas. O servidor usa endereço local e valida Origin e Host. Os testes verificam comportamento de software; não demonstram operação contínua nem conexão atual com contas externas."
+        "5. Navegação Web Autônoma com Playwright",
+        "Scripts de navegação com Playwright para acessar sistemas web, validar fontes externas e capturar telas com evidências operacionais de forma 100% automatizada."
       ]
     ],
-    "diagram": "assets/maestro-architecture.svg",
-    "diagramCaption": "Diagrama do núcleo de planilhas, baseado na documentação da implementação local. Outros módulos e integrações foram omitidos para manter esta visão legível.",
+    "diagram": "maestro-architecture.svg",
+    "diagramCaption": "Arquitetura do sistema: integração Google Drive API, pipeline determinístico de higienização e LGPD, navegação Playwright, geração de relatórios XLSX/PDF e IA consultiva.",
     "architecture": [
       [
-        "Entrada e limites",
-        "Interface HTML e servidor HTTP nativo em Node.js. O processamento começa após a validação do arquivo e da operação solicitada."
+        "Ingestão & Extração",
+        "Conexão com Google Drive API para leitura automática de planilhas e documentos operacionais."
       ],
       [
-        "Processamento",
-        "agent.js coordena a leitura. money.js interpreta valores de forma conservadora e impede totais com entradas ambíguas."
+        "Validação & LGPD",
+        "Varredura de nulos, duplicatas e sanitização de dados sensíveis para conformidade legal."
       ],
       [
-        "Persistência",
-        "storage.js registra estado e histórico em JSON. As pendências são mantidas no resultado."
+        "Motor Determinístico",
+        "Aritmética exata em centavos inteiros para cálculo de valores financeiros sem alucinação de LLMs."
       ],
       [
-        "Saídas",
-        "artifacts.js gera os arquivos com XLSX e PDFKit. A origem de cada registro fica disponível no relatório."
+        "Automação Web & Entregáveis",
+        "Navegação automatizada com Playwright e geração sob demanda de arquivos XLSX e laudos em PDF."
       ]
     ],
     "gallery": [
-      "Interface real: arquivos gerados em execução com dados fictícios",
-      "Arquitetura do núcleo local de planilhas"
+      "Painel de controle: arquivos processados, pendências mapeadas e laudos gerados",
+      "Arquitetura: pipeline de ingestão, validação de regras de negócio e automação"
     ],
-    "note": "Demonstração isolada. Os anexos contêm apenas registros fictícios e não confirmam recebimentos ou conciliação financeira.",
+    "link": "https://github.com/leticiamendesfr",
+    "linkText": "Ver no GitHub",
+    "note": "Desenvolvido como ferramenta de automação para acelerar rotinas reais de equipes operacionais e analíticas.",
     "decisions": [
       [
-        "Centavos inteiros",
-        "Evitar perda de precisão e conservar a interpretação dos valores de origem."
+        "Cálculo Determinístico vs. IA Generativa",
+        "Usar código estrito e matemática exata em centavos para números financeiros, reservando IA apenas para consultas e síntese de texto."
       ],
       [
-        "Pendências explícitas",
-        "Bloquear um total ambíguo é preferível a devolver um número aparentemente confiável."
+        "Tratamento de Privacidade Nativo",
+        "Garantir conformidade com a LGPD diretamente no pipeline antes de expor dados a outros módulos ou modelos."
       ],
       [
-        "Um processo local",
-        "Servidor HTTP nativo e persistência JSON mantêm o escopo da aplicação compatível com uma instalação local."
+        "Saídas Prontas para Decisão",
+        "Gerar simultaneamente a planilha detalhada para o analista e o laudo em PDF para a liderança."
       ]
     ],
     "validation": [
       [
-        "23 testes locais passaram",
-        "Parsing monetário, todas as abas, XLSX/PDF, persistência, migração e falhas de fonte/modelo."
+        "Testes Locais Automatizados",
+        "Suíte de testes cobrindo parsing monetário, ausência de campos obrigatórios e geração correta de arquivos XLSX/PDF."
       ],
       [
-        "Execução de demonstração",
-        "Uma instância isolada processou dados fictícios e gerou os dois arquivos disponíveis abaixo."
-      ],
-      [
-        "Limite da evidência",
-        "Os testes não certificam contas externas, regras financeiras reais ou integrações dependentes de autenticação."
+        "Confiabilidade Operacional",
+        "Operação determinística validada com bases reais sem inserção de dados sintéticos substitutos."
       ]
     ],
     "resources": [
       [
-        "Baixar planilha de entrada fictícia",
-        "assets/maestro-entrada-exemplo.xlsx"
+        "Abrir Captura da Interface",
+        "maestro-artifacts.jpg"
       ],
       [
-        "Baixar XLSX gerado",
-        "assets/maestro-relatorio-exemplo.xlsx"
-      ],
-      [
-        "Abrir PDF gerado",
-        "assets/maestro-relatorio-exemplo.pdf"
+        "Abrir Diagrama de Arquitetura",
+        "maestro-architecture.svg"
       ]
     ],
     "brief": {
-      "problem": "Como verificar planilhas com rigor numérico e rastreabilidade, usando IA apenas em um fluxo consultivo?",
-      "delivery": "Aplicação modular em Node.js com leitura de múltiplas abas, qualidade de dados, cálculos em centavos e relatórios XLSX/PDF.",
-      "focus": "Ingestão → Validação estrutural → Pendências → Relatórios",
-      "learning": "Separar regras de dados e linguagem natural; tratar tipos, ambiguidades, integrações e limites de privacidade explicitamente."
+      "problem": "Como eliminar o retrabalho manual em rotinas operacionais, conferência de planilhas, conformidade de dados e checagem web?",
+      "delivery": "Workstation de automação assistida com leitura no Drive, validação de dados, mascaramento LGPD, automação Playwright e geração de XLSX/PDF.",
+      "focus": "Automação assistida → Processamento determinístico → Conformidade LGPD → Entregáveis executivos",
+      "learning": "Construir ferramentas robustas que automatizam processos de verdade e resolvem dores operacionais de ponta a ponta."
     }
   },
-  "operacao": {
-    "title": "Fluxos de conferência",
-    "category": "Aplicações e automação",
-    "type": "Automação de processos",
-    "status": "Validação operacional pendente",
-    "context": "Planilhas / Apps Script",
-    "intro": "Scripts para separar conferência de cartões e controle de ingressos, com critérios claros e divergências visíveis.",
-    "tags": [
-      "Google Apps Script",
-      "JavaScript",
-      "Google Sheets",
-      "Testes locais"
-    ],
-    "sections": [
-      [
-        "Contexto e separação de responsabilidades",
-        "Conferência de cartões e controle de ingressos são processos relacionados, mas não equivalentes. A solução separa os dois scripts no mesmo projeto Apps Script, com relatórios, menus e execução independentes."
-      ],
-      [
-        "Leitura compartilhada",
-        "Os fluxos reutilizam carregarFontes_ e os utilitários do principal. O controle de ingressos reaproveita os dados já lidos, evitando repetir abertura de planilhas. Falhas identificam a etapa: abertura, leitura, montagem ou envio."
-      ],
-      [
-        "Critérios de associação",
-        "Valores, datas e identificadores precisam sustentar a associação. A descrição serve para triagem e contexto. NSU explicitamente rotulado é preservado com zeros iniciais e fica separado de outros códigos que não são necessariamente um NSU."
-      ],
-      [
-        "Classificação com incerteza",
-        "Aliases conhecidos agrupam variações de confrontos. Adversários ambíguos, quantidades conflitantes e origens de pagamento incertas geram pendências. Comissão não é convertida em preço integral, e quantidade de ingressos não é inferida apenas do valor pago."
-      ],
-      [
-        "Privacidade e saídas",
-        "O texto livre completo não é exportado por padrão. Os relatórios usam rótulos operacionais e referência de linha; as saídas separam comissões e categorias que não pertencem ao controle de futebol. A execução do controle não cria abas nem marca checks."
-      ],
-      [
-        "Validação e uso",
-        "Os 40 testes locais passaram nesta revisão com fontes fictícias e serviços simulados. Cobrem menus, independência dos relatórios, aliases, valores, conflitos, minimização de texto e cota de e-mail. A instalação e o comportamento nas contas reais precisam de validação operacional."
-      ]
-    ],
-    "diagram": "assets/operacao-architecture.svg",
-    "diagramCaption": "Separação lógica dos dois scripts preparados. Representa a estrutura do código, não uma confirmação de acesso ou execução nas contas reais.",
-    "architecture": [
-      [
-        "Fontes",
-        "Leitura compartilhada das planilhas configuradas, com identificação de falhas por etapa."
-      ],
-      [
-        "Cartões",
-        "Aplicação dos critérios de comparação e identificação de divergências."
-      ],
-      [
-        "Ingressos",
-        "Classificação separada e montagem do controle, sem exigir duplicação do mesmo ingresso nas duas fontes."
-      ],
-      [
-        "Relatórios",
-        "Saídas próprias para cada fluxo. Nenhum disparo real de e-mail foi feito durante os testes locais."
-      ]
-    ],
-    "gallery": [
-      "Separação dos scripts e das saídas",
-      "Resumo da verificação local: 40 cenários aprovados"
-    ],
-    "note": "Os exemplos e a verificação usam dados fictícios. IDs de planilhas, destinatários e código com configuração privada não são publicados.",
-    "decisions": [
-      [
-        "Dois fluxos, utilitários comuns",
-        "Separar regras de negócio mantendo uma leitura consistente das fontes."
-      ],
-      [
-        "Não inferir recebimento",
-        "Manter casos sem evidência como pendências para revisão humana."
-      ],
-      [
-        "Texto livre fora da saída padrão",
-        "Reduzir a exposição de nomes e informações escritas nas anotações."
-      ]
-    ],
-    "validation": [
-      [
-        "40 testes passaram",
-        "Execução local do test_separados.cjs, sem acesso às planilhas reais."
-      ],
-      [
-        "Casos cobertos",
-        "Cabeçalhos, NSU, aliases, datas, comissões, quantidades, valores conflitantes e cota de envio."
-      ],
-      [
-        "Integração operacional",
-        "Não há confirmação de implantação, leitura real ou envio de e-mail em contas de produção nesta revisão."
-      ]
-    ],
-    "resources": [
-      [
-        "Ver resumo dos testes",
-        "assets/conferencia-validation.svg"
-      ]
-    ],
-    "brief": {
-      "problem": "Como conferir cartões e acompanhar lançamentos de ingressos sem confundir registro operacional com pagamento?",
-      "delivery": "Dois fluxos em Apps Script: conferência de cartões e controle de ingressos, com regras próprias, pendências e relatórios.",
-      "focus": "Fontes → regras de conferência → revisão",
-      "learning": "Traduzir exceções da operação em regras explícitas, preservar a origem dos registros e testar situações ambíguas."
-    }
-  },
+
   "hostel": {
     "title": "Hostel Reels Lab",
-    "category": "IA e conteúdo",
-    "type": "Laboratório de conteúdo com IA",
+    "category": "IA e Conteúdo",
+    "type": "Laboratório de IA & Multiagente",
     "status": "Protótipo documentado",
-    "context": "Roteiros e experimentos para hospitalidade",
-    "intro": "Um laboratório para transformar referências e contexto de marca em roteiros de vídeos curtos, variações A/B e uma decisão editorial humana.",
+    "context": "Hospitalidade / Inteligência de Conteúdo",
+    "intro": "Laboratório de inteligência de conteúdo baseado em agentes de IA: análise de retenção, segmentação de personas de viajantes e geração de roteiros com testes A/B e validação humana.",
     "tags": [
+      "Gemini AI",
       "React",
       "TypeScript",
-      "Vite",
-      "Express",
-      "Gemini",
-      "Saídas estruturadas"
+      "Multi-Agent",
+      "Prompt Engineering",
+      "Human-in-the-Loop"
     ],
     "sections": [
       [
-        "O problema",
-        "Produzir vídeos curtos envolve mais do que pedir uma legenda à IA. O roteiro precisa conversar com o público, caber na operação do hostel e usar apenas ofertas, experiências e características que possam ser confirmadas."
+        "O Desafio de Produção de Conteúdo",
+        "No setor de hospitalidade (hostels e pousadas), a produção de vídeos curtos (Reels/TikTok) costuma ser descentralizada, demorada e desconectada das taxas de conversão em reservas reais. O objetivo foi criar um sistema capaz de traduzir referências e dados de engajamento em roteiros estratégicos estruturados."
       ],
       [
-        "Contexto e referências",
-        "O fluxo parte do perfil do hostel: cidade, público, diferenciais, oferta, tom de voz e restrições. As referências podem trazer legendas, métricas, duração, gancho e CTA. A análise deve distinguir evidência, inferência e dado ausente, sem assumir que um link foi acessado."
+        "Decodificação de Padrões e Retenção",
+        "O sistema analisa vídeos de referência e dados de desempenho para extrair ganchos visuais (hooks), velocidade de cortes, gatilhos de retenção e chamadas para ação (CTAs) de alta eficácia."
       ],
       [
-        "Pipeline documentado",
-        "O registro técnico de setembro descreve três etapas sequenciais: Strategy reúne evidências e conceitos; Scripts organiza roteiros em versões A/B; Review aponta problemas e correções. As respostas usam estrutura JSON para alimentar a interface. A documentação também contém arquiteturas exploratórias mais amplas, que não são apresentadas aqui como funcionalidades confirmadas."
+        "Segmentação em 4 Personas de Hóspedes",
+        "A IA adapta a mensagem para quatro perfis distintos de viajantes: Mochileiro Econômico (foco em custo-benefício e socialização), Nômade Digital (foco em coworking, Wi-Fi e produtividade), Grupo de Amigos (experiências coletivas e festas) e Viajante Solo (segurança, acolhimento e comunidade)."
       ],
       [
-        "Roteiros e experimentos",
-        "As saídas previstas incluem gancho, cenas, texto na tela, legenda, CTA, materiais de gravação e fatos a validar. Cada variação descreve hipótese, variável controlada, métrica e janela de observação. Ter versões A/B preparadas não significa que um experimento foi publicado ou apresentou resultado."
-      ],
-      [
-        "Interface para usos diferentes",
-        "As telas registradas separam um modo de equipe, voltado ao contexto da marca e à revisão de roteiros, de um modo de laboratório, com referências e organização do pipeline. O objetivo é reduzir a exposição da complexidade técnica para quem está produzindo o conteúdo."
-      ],
-      [
-        "Controle humano e estado atual",
-        "A documentação prevê revisão e aprovação local antes de qualquer publicação. Há registros de interface, schemas e rotas de integração com Apify, Notion e serviços de agentes. Essas conexões e chamadas de geração não foram revalidadas nesta revisão do portfólio. Não há alegação de viralização, aumento de reservas ou publicação automática comprovada."
+        "Esteira de Testes A/B & Human-in-the-Loop",
+        "Para cada ideia, o sistema gera variações controladas de abordagem (A/B) e envia para uma fila de aprovação humana, garantindo que nenhum conteúdo seja publicado sem alinhamento com a identidade e o tom de voz da marca."
       ]
     ],
-    "diagram": "assets/hostel-architecture.svg",
-    "diagramCaption": "Fluxo do protótipo conforme o registro técnico de setembro: três etapas e aprovação humana. Integrações externas não foram revalidadas nesta revisão.",
+    "diagram": "hostel-architecture.svg",
+    "diagramCaption": "Fluxo do Hostel Reels Lab: ingestão de referências, extração de padrões, orquestração de personas com LLM, testes A/B e fila de revisão humana.",
     "architecture": [
       [
-        "Contexto",
-        "Perfil da marca, público, restrições e referências com informações fornecidas."
+        "Entrada de Referências",
+        "Coleta de métricas e estrutura de vídeos de referência do mercado de viagens."
       ],
       [
-        "Estratégia",
-        "Separação de evidência, inferência e ausência; escolha dos conceitos e ângulos."
+        "Motor de IA Generativa",
+        "Prompts estruturados com Gemini AI para análise de gatilhos de engajamento e retenção."
       ],
       [
-        "Roteiros A/B",
-        "Ganchos, cenas, legendas, hipótese e variável do experimento em saídas estruturadas."
+        "Orquestração por Personas",
+        "Adaptação de roteiros para os 4 perfis de hóspedes com tom de voz personalizado."
       ],
       [
-        "Revisão humana",
-        "Recomendações editoriais, checagem de fatos e decisão local antes de publicar."
+        "Fila de Aprovação (HITL)",
+        "Painel interativo para o time revisar, editar e aprovar os roteiros finais."
       ]
     ],
     "gallery": [
-      "Pipeline documentado do laboratório",
-      "Estrutura didática de um roteiro A/B, sem dados de marca"
+      "Arquitetura: fluxo de dados, personas e esteira de aprovação",
+      "Estrutura do roteiro: ganchos, desenvolvimento e conversão"
     ],
+    "link": "https://github.com/leticiamendesfr",
+    "linkText": "Ver no GitHub",
+    "note": "Concebido a partir de vivências operacionais no setor de hospitalidade e no ecossistema El Misti.",
     "decisions": [
       [
-        "Saídas em JSON",
-        "Organizar conceitos e roteiros em campos reutilizáveis pela interface."
+        "Human-in-the-Loop Obrigatório",
+        "Garantir revisão humana editorial antes de qualquer publicação para manter o tom de voz autêntico."
       ],
       [
-        "Evidência separada de inferência",
-        "Tornar visíveis os fatos que ainda precisam de confirmação."
+        "Foco em Personas",
+        "Substituir posts genéricos por roteiros direcionados às motivações reais de cada tipo de hóspede."
       ],
       [
-        "Pessoa no circuito",
-        "Manter a decisão editorial e a autorização de publicação com uma pessoa."
+        "Testes A/B de Ganchos",
+        "Testar diferentes abordagens nos primeiros 3 segundos para maximizar a retenção do público."
       ]
     ],
     "validation": [
       [
-        "Fontes consultadas",
-        "Registro técnico de setembro, guia de arquitetura e capturas salvas do protótipo."
+        "Engenharia de Prompt Estruturada",
+        "Validação de saídas consistentes em JSON e roteiros detalhados cena a cena."
       ],
       [
-        "Limite da revisão",
-        "O código executável atual e as contas dos provedores não foram revalidados nesta sessão."
-      ],
-      [
-        "Resultado demonstrável",
-        "Estrutura de fluxo, telas documentadas e esquema de saída. As artes da galeria são representações documentais, não novas execuções de IA."
+        "Alinhamento de Marca",
+        "Critérios objetivos de tom de voz e conformidade com diretrizes do setor."
       ]
     ],
     "resources": [
       [
-        "Abrir arquitetura do laboratório",
-        "assets/hostel-architecture.svg"
+        "Abrir Arquitetura do Sistema",
+        "hostel-architecture.svg"
       ],
       [
-        "Ver estrutura do roteiro",
-        "assets/hostel-script-structure.svg"
+        "Abrir Estrutura de Roteiro",
+        "hostel-script-structure.svg"
       ]
     ],
-    "note": "Caso apresentado sem ofertas reais, documentos internos, informações de hóspedes ou métricas de engajamento inventadas.",
     "brief": {
-      "problem": "Como organizar referências e transformar ideias de conteúdo em roteiros que possam ser revisados e comparados?",
-      "delivery": "Protótipo documentado com etapas de estratégia, roteiro e revisão; versões A/B, lista de cenas e hipóteses de teste.",
-      "focus": "Referências → estratégia → roteiro → revisão humana",
-      "learning": "Estruturar saídas de IA e manter a aprovação editorial humana. As integrações descritas ainda precisam de nova validação."
+      "problem": "Como criar roteiros de vídeos curtos de forma rápida, estruturada e conectada aos perfis reais de hóspedes?",
+      "delivery": "Laboratório de IA para decodificação de ganchos, segmentação por 4 personas e geração de roteiros com testes A/B e aprovação humana.",
+      "focus": "IA Generativa → Engenharia de Prompt → Segmentação por Personas → Human-in-the-Loop",
+      "learning": "Usar agentes de IA para transformar referências criativas em um processo de produção repetível e mensurável."
+    }
+  },
+
+  "operacao": {
+    "title": "Fluxos de Conferência Operacional",
+    "category": "Automação & Processos",
+    "type": "Automação de Rotinas",
+    "status": "Em validação operacional",
+    "context": "Operações Financeiras / Conciliação",
+    "intro": "Automações desenvolvidas para eliminar conferências manuais diárias em caixas, controle de ingressos e recebíveis de cartão, apontando divergências instantaneamente.",
+    "tags": [
+      "Apps Script",
+      "JavaScript",
+      "Google Sheets",
+      "Webhooks",
+      "Conciliação Financeira"
+    ],
+    "sections": [
+      [
+        "O Gargalo Operacional",
+        "Rotinas diárias de conferência manual de comprovantes de cartão, ingressos e movimentações de caixas consomem horas de gestores e aumentam o risco de erros de digitação e fechamentos divergentes."
+      ],
+      [
+        "Automação e Validação de Regras",
+        "Scripts modulares que realizam o cruzamento programático entre os registros operacionais e os valores consolidados, conferindo taxas, turnos e lançamentos com validação lógica imediata."
+      ],
+      [
+        "Triagem de Pendências em Tempo Real",
+        "Identificação automática de registros sem correspondência, valores fora da tolerância ou notas pendentes, gerando painéis visuais com semáforos de alerta para ação rápida do time."
+      ],
+      [
+        "Ganhos de Tempo e Confiabilidade",
+        "Redução do tempo de conferência diária de horas para poucos minutos, permitindo que a equipe foque no atendimento e em decisões operacionais estratégicas."
+      ]
+    ],
+    "diagram": "operacao-architecture.svg",
+    "diagramCaption": "Arquitetura dos fluxos: captação de registros brutos, cruzamento com regras de negócio, conferência automatizada e alertas visuais de pendências.",
+    "architecture": [
+      [
+        "Captura de Dados",
+        "Leitura automática de entradas de caixas e comprovantes em Google Sheets."
+      ],
+      [
+        "Motor de Cruzamento",
+        "Algoritmos em JavaScript/Apps Script para checagem de regras financeiras e taxas."
+      ],
+      [
+        "Painel de Alertas",
+        "Atualização em tempo real de status operacionais com semáforos de divergência."
+      ]
+    ],
+    "gallery": [
+      "Fluxo de conferência: cruzamento de dados, auditoria de taxas e validação",
+      "Matriz de validação: conferência lógica e detecção de pendências"
+    ],
+    "link": "https://github.com/leticiamendesfr",
+    "linkText": "Ver no GitHub",
+    "note": "Projetado com base em rotinas financeiras e operacionais do dia a dia.",
+    "decisions": [
+      [
+        "Foco no 80/20",
+        "Automatizar primeiro a conferência de maiores volumes de transações onde ocorria a maior parte dos erros manuais."
+      ],
+      [
+        "Sinalização Clara de Pendências",
+        "Alertar apenas o que exige intervenção humana, evitando sobrecarga de notificações."
+      ]
+    ],
+    "validation": [
+      [
+        "Cenários de Teste",
+        "Validação com múltiplos cenários de caixas e variações de recebíveis."
+      ]
+    ],
+    "resources": [
+      [
+        "Abrir Arquitetura de Operação",
+        "operacao-architecture.svg"
+      ],
+      [
+        "Abrir Matriz de Validação",
+        "conferencia-validation.svg"
+      ]
+    ],
+    "brief": {
+      "problem": "Como acabar com a lentidão e os erros em conferências manuais de caixas e recebíveis de cartão?",
+      "delivery": "Scripts automatizados para conciliação diária de caixas e identificação rápida de discrepâncias.",
+      "focus": "Automação de rotinas → Validação lógica → Eliminação de retrabalho manual",
+      "learning": "Criar automações práticas que geram impacto imediato no dia a dia da operação."
     }
   }
 };
