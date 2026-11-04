@@ -4,13 +4,115 @@ const publishedMedia = {
   "clickbus-2": "clickbus-grafana.png",
   "maestro-1": "maestro-artifacts.jpg",
   "maestro-2": "maestro-architecture.svg",
-  "operacao-1": "operacao-architecture.svg",
-  "operacao-2": "conferencia-validation.svg",
   "hostel-1": "hostel-architecture.svg",
-  "hostel-2": "hostel-script-structure.svg"
+  "hostel-2": "hostel-script-structure.svg",
+  "study-1": "study-agent-architecture.svg",
+  "study-2": "study-agent-architecture.svg"
 };
 
 const projects = {
+  "study-agent": {
+    "title": "StudyAgent / Hybrid RAG & Multimodal AI",
+    "category": "IA e Engenharia de Dados",
+    "type": "Tutor de IA Autônomo & RAG Híbrido",
+    "status": "Em operação",
+    "context": "Educação Superior / Ciência de Dados & IA",
+    "intro": "Assistente de estudos autônomo e de nível de produção: RAG Híbrido com HNSW e Full-Text Search via Reciprocal Rank Fusion (RRF), raciocínio multimodal com Gemini 2.0 Flash e orquestração assíncrona orientada a eventos no n8n.",
+    "tags": [
+      "Gemini 2.0 Flash",
+      "PostgreSQL",
+      "pgvector",
+      "HNSW Indexing",
+      "Hybrid Search (RRF)",
+      "n8n Workflows",
+      "Telegram Bot API"
+    ],
+    "sections": [
+      [
+        "O Problema do 'Naive RAG' no Estudo Técnico",
+        "Assistentes de IA educacionais convencionais falham em cursos de tecnologia avançados (Data Science e Engenharia de Software) porque quebram o texto em blocos arbitrários e usam apenas busca vetorial por cosseno. Quando o estudante faz perguntas sobre sintaxes exatas de CLI (ex: 'sqoop import'), comandos SQL ou flags de bancos de dados, a busca vetorial isolada alucina por não capturar termos léxicos exatos."
+      ],
+      [
+        "1. Busca Híbrida & Reciprocal Rank Fusion (RRF)",
+        "Implementação de um motor duplo no PostgreSQL (Supabase): busca semântica densa (vetores de 768 dimensões com text-embedding-004) combinada com busca lexical Full-Text Search (tsvector em português e índice GIN). As duas listas de resultados são intercaladas via fórmula matemática RRF (Reciprocal Rank Fusion), garantindo tanto entendimento conceitual quanto precisão cirúrgica de termos e comandos."
+      ],
+      [
+        "2. Indexação HNSW vs. Degradação de IVFFlat",
+        "Escolha arquitetural deliberada de grafos navegáveis hierárquicos (HNSW) sobre IVFFlat no pgvector. Enquanto o IVFFlat exige reindexações periódicas custosas à medida que novos PDFs de aulas são adicionados (perdendo recall rapidamente), o índice HNSW mantém mais de 98% de recall sem nenhuma manutenção manual."
+      ],
+      [
+        "3. Solucionador Multimodal de Imagens (Vision Solver)",
+        "Buffer binário no n8n que despacha fotos tiradas pelo Telegram (lousas de aula, diagramas de arquitetura, esquemas relacionais ou prints de erro no terminal) diretamente para o Gemini 2.0 Flash com contexto de 1 milhão de tokens, gerando diagnóstico de causa-raiz e solução imediata."
+      ],
+      [
+        "4. Orquestração com Custo Zero ($0/mês)",
+        "Pipeline completo operando 24/7 com R$ 0 de custo de nuvem: n8n orquestrando webhooks e roteamentos assíncronos, Supabase no free-tier de banco relacional e vetorial, e Google AI Studio API aproveitando as cotas do Gemini."
+      ]
+    ],
+    "diagram": "study-agent-architecture.svg",
+    "diagramCaption": "Arquitetura do StudyAgent: roteamento multimodal via Telegram e Web, orquestração n8n, Supabase com pgvector HNSW + FTS em português e inferência Gemini 2.0 Flash.",
+    "architecture": [
+      [
+        "Ingestão & Roteamento",
+        "Webhook assíncrono no n8n separando fluxos de texto, PDFs acadêmicos (splitter semântico) e fotos/áudios."
+      ],
+      [
+        "Motor Vetorial & Léxico",
+        "Tabelas no Supabase com vetores 768d, índices HNSW e tsvector com pesos léxicos GIN."
+      ],
+      [
+        "Fusão RRF",
+        "Algoritmo SQL executando Reciprocal Rank Fusion para rankear o contexto mais relevante."
+      ],
+      [
+        "Raciocínio & Resposta",
+        "Geração multimodal com Gemini 2.0 Flash e entrega formatada no Telegram e Dashboard."
+      ]
+    ],
+    "gallery": [
+      "Arquitetura: pipeline de ingestão, roteamento assíncrono e recuperação híbrida",
+      "Fluxo de resolução: visão multimodal para diagramas, código e fórmulas"
+    ],
+    "link": "https://github.com/leticiamendesfr",
+    "linkText": "Ver repositório no GitHub",
+    "note": "Construído como assistente pessoal de aprendizado para a graduação em Data Science na FIAP.",
+    "decisions": [
+      [
+        "RRF sobre Reranker Externo",
+        "Optar por Reciprocal Rank Fusion direto no SQL em vez de chamar um modelo reranker externo (como Cohere), eliminando latência de rede e custos de API."
+      ],
+      [
+        "HNSW para Manutenção Zero",
+        "Garantir alta precisão contínua em bancos de vetores incrementais sem necessidade de rotinas de manutenção ou downtime."
+      ],
+      [
+        "Multimodalidade Nativa",
+        "Processar fotos de diagramas de aula diretamente pela API do Gemini em vez de depender de OCR frágil."
+      ]
+    ],
+    "validation": [
+      [
+        "Testes com Material Real da FIAP",
+        "Validado com centenas de páginas de apostilas, exercícios práticos de SQL/Python e diagramas de arquitetura de dados."
+      ],
+      [
+        "Recall e Precisão Léxica",
+        "Eliminação total de respostas errôneas em comandos técnicos e nomenclaturas exatas de engenharia de dados."
+      ]
+    ],
+    "resources": [
+      [
+        "Abrir Arquitetura do RAG",
+        "study-agent-architecture.svg"
+      ]
+    ],
+    "brief": {
+      "problem": "Como construir um tutor de IA verdadeiramente confiável para estudos avançados em Data Science sem alucinar comandos e diagramas?",
+      "delivery": "Agente autônomo com RAG Híbrido (HNSW + BM25 via RRF), visão multimodal Gemini 2.0 Flash e n8n operando a custo zero.",
+      "focus": "Advanced RAG → HNSW & Reciprocal Rank Fusion → Multimodal Vision → Orquestração n8n",
+      "learning": "Implementar padrões de engenharia de IA de nível de produção que superam as limitações do RAG ingênuo."
+    }
+  },
   "clickbus": {
     "title": "ClickBus / Data Flow",
     "category": "Ciência de dados & ML",
@@ -327,95 +429,6 @@ const projects = {
       "delivery": "Laboratório de IA para decodificação de ganchos, segmentação por 4 personas e geração de roteiros com testes A/B e aprovação humana.",
       "focus": "IA Generativa → Engenharia de Prompt → Segmentação por Personas → Human-in-the-Loop",
       "learning": "Usar agentes de IA para transformar referências criativas em um processo de produção repetível e mensurável."
-    }
-  },
-
-  "operacao": {
-    "title": "Fluxos de Conferência Operacional",
-    "category": "Automação & Processos",
-    "type": "Automação de Rotinas",
-    "status": "Em validação operacional",
-    "context": "Operações Financeiras / Conciliação",
-    "intro": "Automações desenvolvidas para eliminar conferências manuais diárias em caixas, controle de ingressos e recebíveis de cartão, apontando divergências instantaneamente.",
-    "tags": [
-      "Apps Script",
-      "JavaScript",
-      "Google Sheets",
-      "Webhooks",
-      "Conciliação Financeira"
-    ],
-    "sections": [
-      [
-        "O Gargalo Operacional",
-        "Rotinas diárias de conferência manual de comprovantes de cartão, ingressos e movimentações de caixas consomem horas de gestores e aumentam o risco de erros de digitação e fechamentos divergentes."
-      ],
-      [
-        "Automação e Validação de Regras",
-        "Scripts modulares que realizam o cruzamento programático entre os registros operacionais e os valores consolidados, conferindo taxas, turnos e lançamentos com validação lógica imediata."
-      ],
-      [
-        "Triagem de Pendências em Tempo Real",
-        "Identificação automática de registros sem correspondência, valores fora da tolerância ou notas pendentes, gerando painéis visuais com semáforos de alerta para ação rápida do time."
-      ],
-      [
-        "Ganhos de Tempo e Confiabilidade",
-        "Redução do tempo de conferência diária de horas para poucos minutos, permitindo que a equipe foque no atendimento e em decisões operacionais estratégicas."
-      ]
-    ],
-    "diagram": "operacao-architecture.svg",
-    "diagramCaption": "Arquitetura dos fluxos: captação de registros brutos, cruzamento com regras de negócio, conferência automatizada e alertas visuais de pendências.",
-    "architecture": [
-      [
-        "Captura de Dados",
-        "Leitura automática de entradas de caixas e comprovantes em Google Sheets."
-      ],
-      [
-        "Motor de Cruzamento",
-        "Algoritmos em JavaScript/Apps Script para checagem de regras financeiras e taxas."
-      ],
-      [
-        "Painel de Alertas",
-        "Atualização em tempo real de status operacionais com semáforos de divergência."
-      ]
-    ],
-    "gallery": [
-      "Fluxo de conferência: cruzamento de dados, auditoria de taxas e validação",
-      "Matriz de validação: conferência lógica e detecção de pendências"
-    ],
-    "link": "https://github.com/leticiamendesfr",
-    "linkText": "Ver no GitHub",
-    "note": "Projetado com base em rotinas financeiras e operacionais do dia a dia.",
-    "decisions": [
-      [
-        "Foco no 80/20",
-        "Automatizar primeiro a conferência de maiores volumes de transações onde ocorria a maior parte dos erros manuais."
-      ],
-      [
-        "Sinalização Clara de Pendências",
-        "Alertar apenas o que exige intervenção humana, evitando sobrecarga de notificações."
-      ]
-    ],
-    "validation": [
-      [
-        "Cenários de Teste",
-        "Validação com múltiplos cenários de caixas e variações de recebíveis."
-      ]
-    ],
-    "resources": [
-      [
-        "Abrir Arquitetura de Operação",
-        "operacao-architecture.svg"
-      ],
-      [
-        "Abrir Matriz de Validação",
-        "conferencia-validation.svg"
-      ]
-    ],
-    "brief": {
-      "problem": "Como acabar com a lentidão e os erros em conferências manuais de caixas e recebíveis de cartão?",
-      "delivery": "Scripts automatizados para conciliação diária de caixas e identificação rápida de discrepâncias.",
-      "focus": "Automação de rotinas → Validação lógica → Eliminação de retrabalho manual",
-      "learning": "Criar automações práticas que geram impacto imediato no dia a dia da operação."
     }
   }
 };

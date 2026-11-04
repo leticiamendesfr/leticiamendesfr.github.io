@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="470" viewBox="0 0 900 470" role="img" aria-labelledby="title desc">
+  <title id="title">StudyAgent — Arquitetura de RAG Híbrido &amp; Visão Multimodal</title>
+  <desc id="desc">Pipeline de aprendizado contínuo: Telegram Bot, n8n, Supabase (pgvector HNSW + FTS) e Gemini 2.0 Flash.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3" orient="auto">
+      <path d="m0 0 6 3-6 3" fill="none" stroke="#718397"/>
+    </marker>
+  </defs>
+  <rect width="900" height="470" rx="6" fill="#1c2026"/>
+  
+  <text x="30" y="38" fill="#e9eff8" font-family="Arial,sans-serif" font-size="18" font-weight="bold">StudyAgent — Arquitetura de RAG Híbrido &amp; Visão Multimodal</text>
+  <text x="30" y="60" fill="#91a0b2" font-family="Arial,sans-serif" font-size="11">Pipeline de aprendizado contínuo com recuperação de alta precisão (HNSW + BM25 via RRF), n8n e Gemini 2.0 Flash.</text>
+
+  <!-- Grupo Clientes -->
+  <rect x="30" y="100" width="180" height="290" rx="6" fill="none" stroke="#44505e" stroke-dasharray="5 5"/>
+  <text x="45" y="125" fill="#9fb5cc" font-family="Arial,sans-serif" font-size="11" font-weight="bold">INTERFACES DE USUÁRIO</text>
+  
+  <rect x="42" y="145" width="156" height="105" rx="5" fill="#232932" stroke="#46515f"/>
+  <text x="54" y="172" fill="#e5edf7" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Telegram Bot API</text>
+  <text x="54" y="195" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="11">Captura de voz &amp; fotos</text>
+  <text x="54" y="213" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="11">Upload de PDFs técnicos</text>
+  <text x="54" y="231" fill="#21c8f0" font-family="Arial,sans-serif" font-size="11">Dúvidas rápidas de aula</text>
+
+  <rect x="42" y="265" width="156" height="105" rx="5" fill="#232932" stroke="#46515f"/>
+  <text x="54" y="292" fill="#e5edf7" font-family="Arial,sans-serif" font-size="13" font-weight="bold">Study Dashboard</text>
+  <text x="54" y="315" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="11">Gestão de matérias</text>
+  <text x="54" y="333" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="11">Visualização de trilhas</text>
+  <text x="54" y="351" fill="#21c8f0" font-family="Arial,sans-serif" font-size="11">Web nativa sem build</text>
+
+  <!-- Seta Clientes -> Orquestrador -->
+  <path d="M210 200 H245" fill="none" stroke="#718397" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M210 320 H228 V240 H245" fill="none" stroke="#718397" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Orquestrador n8n -->
+  <rect x="245" y="100" width="345" height="175" rx="6" fill="#232932" stroke="#46515f"/>
+  <text x="262" y="128" fill="#e5edf7" font-family="Arial,sans-serif" font-size="14" font-weight="bold">Orquestrador n8n (Event-Driven Workflows)</text>
+  <text x="262" y="152" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="11">Roteamento condicional assíncrono por tipo de carga</text>
+  
+  <rect x="260" y="168" width="145" height="92" rx="4" fill="#1c2026" stroke="#44505e"/>
+  <text x="270" y="190" fill="#e5edf7" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Ingestão de PDFs</text>
+  <text x="270" y="210" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="10">Splitter semântico</text>
+  <text x="270" y="228" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="10">Overlap de 15%</text>
+  <text x="270" y="246" fill="#21c8f0" font-family="Arial,sans-serif" font-size="10">Extração de chunks</text>
+
+  <rect x="425" y="168" width="150" height="92" rx="4" fill="#1c2026" stroke="#44505e"/>
+  <text x="435" y="190" fill="#e5edf7" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Vision Solver Pipeline</text>
+  <text x="435" y="210" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="10">Fotos de lousa &amp; esquemas</text>
+  <text x="435" y="228" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="10">Erros de terminal &amp; CLI</text>
+  <text x="435" y="246" fill="#21c8f0" font-family="Arial,sans-serif" font-size="10">Buffer binário direto</text>
+
+  <!-- Camada LLM & Multimodal -->
+  <rect x="245" y="295" width="345" height="120" rx="6" fill="#293b4f" stroke="#708eaf"/>
+  <text x="262" y="323" fill="#e5edf7" font-family="Arial,sans-serif" font-size="14" font-weight="bold">Google AI Studio / Gemini Models</text>
+  <text x="262" y="348" fill="#e5edf7" font-family="Arial,sans-serif" font-size="12">• Gemini 2.0 Flash (Janela de 1M tokens, raciocínio &amp; visão)</text>
+  <text x="262" y="370" fill="#e5edf7" font-family="Arial,sans-serif" font-size="12">• text-embedding-004 (Vetores densos de 768 dimensões)</text>
+  <text x="262" y="392" fill="#21c8f0" font-family="Arial,sans-serif" font-size="11">Otimização de custo: latência ultra-baixa com free-tier</text>
+
+  <!-- Conexões n8n <-> Gemini -->
+  <path d="M332 260 V295" stroke="#718397" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M500 260 V295" stroke="#718397" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Seta n8n / Gemini -> Supabase -->
+  <path d="M590 185 H625" fill="none" stroke="#718397" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M590 355 H610 V250 H625" fill="none" stroke="#718397" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Banco de Dados Supabase -->
+  <rect x="625" y="100" width="245" height="315" rx="6" fill="#232932" stroke="#46515f"/>
+  <text x="642" y="128" fill="#e5edf7" font-family="Arial,sans-serif" font-size="14" font-weight="bold">Supabase (PostgreSQL 15+)</text>
+  <text x="642" y="148" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="11">Motor de Recuperação Híbrida</text>
+
+  <rect x="640" y="165" width="215" height="60" rx="4" fill="#1c2026" stroke="#44505e"/>
+  <text x="650" y="187" fill="#e5edf7" font-family="Arial,sans-serif" font-size="12" font-weight="bold">HNSW Vector Graph</text>
+  <text x="650" y="207" fill="#21c8f0" font-family="Arial,sans-serif" font-size="11">Recall &gt; 98% sem reindexação</text>
+
+  <rect x="640" y="235" width="215" height="60" rx="4" fill="#1c2026" stroke="#44505e"/>
+  <text x="650" y="257" fill="#e5edf7" font-family="Arial,sans-serif" font-size="12" font-weight="bold">GIN Index (Full-Text Search)</text>
+  <text x="650" y="277" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="11">tsvector nativo em português</text>
+
+  <rect x="640" y="305" width="215" height="95" rx="4" fill="#1e3440" stroke="#21c8f0"/>
+  <text x="650" y="327" fill="#21c8f0" font-family="Arial,sans-serif" font-size="12" font-weight="bold">Reciprocal Rank Fusion (RRF)</text>
+  <text x="650" y="347" fill="#e5edf7" font-family="Arial,sans-serif" font-size="11">Score = 1/(60+rk_vec) + 1/(60+rk_fts)</text>
+  <text x="650" y="367" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="10">Elimina alucinações em termos exatos</text>
+  <text x="650" y="385" fill="#a3b0c0" font-family="Arial,sans-serif" font-size="10">Custo de infraestrutura: $0/mês</text>
+
+  <text x="30" y="445" fill="#8797aa" font-family="Arial,sans-serif" font-size="10">Letícia Mendes / documentação do projeto • FIAP Data Science &amp; AI Builder</text>
+</svg>
